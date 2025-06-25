@@ -1,0 +1,15 @@
+# Virtual Environment
+venv/
+/venv/
+__pycache__/
+
+# Database
+instance/
+*.sqlite3
+
+# Environment files
+.env
+.flaskenv
+
+# IDE files
+.vscode/

@@ -1,15 +1,12 @@
-# Virtual Environment
+# Python virtual environment
 venv/
-/venv/
 __pycache__/
 
-# Database
+# Database files
 instance/
+*.db
 *.sqlite3
 
-# Environment files
-.env
-.flaskenv
-
-# IDE files
-.vscode/
+# OS-specific files
+.DS_Store
+Thumbs.db

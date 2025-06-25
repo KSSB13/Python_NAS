@@ -1,0 +1,49 @@
+### Register a new user
+# @name registerUser
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+  "username": "myuser",
+  "password": "mypassword123"
+}
+
+###
+### Login as the user to get a token
+# @name loginUser
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "username": "myuser",
+  "password": "mypassword123"
+}
+
+###
+# After logging in, copy the access_token and paste it below
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1MDg3MTM4NiwianRpIjoiMTMwYmYwNDYtNjdiZS00Y2UxLTgzYmItNDE0MWM2NDkwNDI1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im15dXNlciIsIm5iZiI6MTc1MDg3MTM4NiwiY3NyZiI6IjhlMjk3NzRiLWY2NmMtNGE3Mi1iNWYzLTJlY2RhMTk0Y2Y0MSIsImV4cCI6MTc1MDg3MjI4Nn0.0Z2nbibOPK0oYIm0uYM_WE1BjXrI8QimY_IBcPXCA6U
+
+###
+### List all files (requires authentication)
+GET http://localhost:8080/api/files
+Authorization: Bearer {{token}}
+
+###
+### Upload a file (requires authentication)
+# Create a file named 'test-upload.txt' in your project folder first!
+POST http://localhost:8080/api/upload
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test-upload.txt"
+Content-Type: text/plain
+
+This is the content of my test file.
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+### Download a file (requires authentication)
+GET http://localhost:8080/api/download/test-upload.txt
+Authorization: Bearer {{token}}
